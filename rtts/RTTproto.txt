@@ -1,0 +1,53 @@
+RTT Protocol (Real-Time-Tracking Protocol)
+
+RTT@PTTDE:LLL/{BODY}&&
+{
+	RTT@ - packet start
+	P - protocol version
+	TT - packet type
+	D - Data type  (T-Text, X-XML, J-JSON, H-HTML, B-binary)
+	E - Date Encoding (0 - ASCII , 1 - Windows-1251, 2 - UTF-8)	
+	LLL - length of body
+	[BODY] - body (packet)
+	&& - packet end
+}
+
+Hash for register (base64 from)	
+	Event:'Event'
+	Event:'Event',ID:'ID'
+	return register:
+		{http:'127.0.0.1:5780',udp:'127.0.0.1:5781',tcp:'127.0.0.1:5782',Event:'',ID:'','EvName':'','IDName':''}
+
+
+[Packets]
+
+T=00 (Text)
+PING
+	RTT@A00T0:004/PING&&
+
+T=01 (JSON)
+Init Man/Viewer
+	RTT@A01J0:018/{Event:'GRM-18-6'}&&
+	RTT@A01J0:070/{IMEI:'5553578951420',ID:'001',Event:'GRM-18-6',Filter:'+ev/GRM-18+6'}&&
+	;;
+	{
+		IMEI:'',
+		ID:'UserName',
+		Event:'EventID',
+		Filter:'r/lat/lon/km +sw/ +ew/ +fn/ -sw/ -ew/ -fn/ +ev/ -ev/'
+	}
+
+T=02 (JSON)
+DATA REPORT
+	RTT@A02J1:117/{IMEI:'5553578951423',ID:'002',Event:'GRM/18/6',DT:'2017-10-16T09:15:00Z',Lat:55.55,Lon:37.5,Alt:0.0,Hdg:0.0,Spd:0.0}&&
+	;; for Event
+	RTT@A02J1:104/{IMEI:'5553578951425',ID:'MaxRiv',DT:'2017-10-16T09:18:00Z',Lat:55.45,Lon:37.39,Alt:0.0,Hdg:0.0,Spd:0.0}&&
+	;; for All-Time
+	{
+		IMEI:'',
+		ID:'UserName',
+		Event:'EventID',
+		DT:'YYYY-MM-ddTHH:mm:ssZ',
+		Lat:0.0, Lon:0.0, Alt:0.0,
+		Hdg:0.0, Spd:0.0
+	}	

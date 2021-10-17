@@ -1,0 +1,5 @@
+C:\Downloads\CD-REC\TEST\rtts\rtts\bin\Debug\rtts.exe
+C:\Downloads\CD-REC\TEST\rtts\rtts\bin\Debug\rtts.pdb
+C:\Downloads\CD-REC\TEST\rtts\rtts\obj\Debug\ResolveAssemblyReference.cache
+C:\Downloads\CD-REC\TEST\rtts\rtts\obj\Debug\rtts.exe
+C:\Downloads\CD-REC\TEST\rtts\rtts\obj\Debug\rtts.pdb
